@@ -134,15 +134,17 @@ public class CarTest {
 
         List<Car> highCars = carsGrouped.get("HIGH");
         List<Car> lowCars = carsGrouped.get("LOW");
+        DoubleSummaryStatistics highStats = highCars.stream().collect(Collectors.summarizingDouble( Car::getPrice));
+        DoubleSummaryStatistics lowStats = lowCars.stream().collect(Collectors.summarizingDouble(Car::getPrice));
 
-        double highAverage = highCars.stream().mapToDouble(Car::getPrice).average().orElse(0);
-        double lowAverage = lowCars.stream().mapToDouble(Car::getPrice).average().orElse(0);
+        double highAverage = highStats.getAverage();
+        double lowAverage = lowStats.getAverage();
 
-        double highHighest = highCars.stream().mapToDouble(Car::getPrice).max().orElse(0);
-        double lowHighest = lowCars.stream().mapToDouble(Car::getPrice).max().orElse(0);
+        double highHighest = highStats.getMax();
+        double lowHighest = lowStats.getMax();
 
-        float highLowest = highCars.stream().min( Comparator.comparing( (Car car)->car.getPrice() )).get().getMileage();
-        float lowLowest = lowCars.stream().map( (Car car)-> car.getPrice() ).min( Comparator.comparing(price -> price)).get();
+        double highLowest = highStats.getMin();
+        double lowLowest = lowStats.getMin();
         long highCount = highCars.size();
         long lowCount = lowCars.stream().count();
 
@@ -164,7 +166,7 @@ public class CarTest {
         assertEquals(22500.0, lowAverage);
         assertEquals(75000.0, highHighest);
         assertEquals(28000.0, lowHighest);
-        assertEquals(53000.0, highLowest);
+        assertEquals(38000.0, highLowest);
         assertEquals(15000.0, lowLowest);
     }
     @Test
@@ -176,14 +178,17 @@ public class CarTest {
         List<Car> highCars = carsGrouped.get(true);
         List<Car> lowCars = carsGrouped.get(false);
 
-        int highAverage = (int) highCars.stream().mapToInt(Car::getYear).average().orElse(0);
-        int lowAverage = (int) lowCars.stream().mapToInt(Car::getYear).average().orElse(0);
+        DoubleSummaryStatistics highStats = highCars.stream().collect(Collectors.summarizingDouble( Car::getYear));
+        DoubleSummaryStatistics lowStats = lowCars.stream().collect(Collectors.summarizingDouble(Car::getYear));
 
-        int highHighest = highCars.stream().mapToInt(Car::getYear).max().orElse(0);
-        int lowHighest = lowCars.stream().mapToInt(Car::getYear).max().orElse(0);
+        double highAverage = highStats.getAverage();
+        double lowAverage = lowStats.getAverage();
 
-        int highLowest = highCars.stream().min( Comparator.comparing( (Car car)->car.getYear() )).get().getYear();
-        int lowLowest = lowCars.stream().map( (Car car)-> car.getYear() ).min( Comparator.comparing(year -> year)).get();
+        double highHighest = highStats.getMax();
+        double lowHighest = lowStats.getMax();
+
+        double highLowest = highStats.getMin();
+        double lowLowest = lowStats.getMin();
         long highCount = highCars.size();
         long lowCount = lowCars.stream().count();
 
@@ -201,7 +206,7 @@ public class CarTest {
 
         assertEquals(6, highCount);
         assertEquals(4, lowCount);
-        assertEquals(2017, highAverage);
+        assertEquals(2017.3333333333333, highAverage);
         assertEquals(2007, lowAverage);
         assertEquals(2020, highHighest);
         assertEquals(2010, lowHighest);
@@ -218,14 +223,17 @@ public class CarTest {
         List<Car> highCars = carsGrouped.get("HIGH");
         List<Car> lowCars = carsGrouped.get("LOW");
 
-        double highAverage = highCars.stream().mapToDouble(Car::getMileage).average().orElse(0);
-        double lowAverage = lowCars.stream().mapToDouble(Car::getMileage).average().orElse(0);
+        DoubleSummaryStatistics highStats = highCars.stream().collect(Collectors.summarizingDouble( Car::getMileage));
+        DoubleSummaryStatistics lowStats = lowCars.stream().collect(Collectors.summarizingDouble(Car::getMileage));
 
-        int highHighest = highCars.stream().mapToInt(Car::getMileage).max().orElse(0);
-        int lowHighest = lowCars.stream().mapToInt(Car::getMileage).max().orElse(0);
+        double highAverage = highStats.getAverage();
+        double lowAverage = lowStats.getAverage();
 
-        int highLowest = highCars.stream().min( Comparator.comparing( (Car car)->car.getMileage() )).get().getMileage();
-        int lowLowest = lowCars.stream().map( (Car car)-> car.getMileage() ).min( Comparator.comparing(mileage -> mileage)).get();
+        double highHighest = highStats.getMax();
+        double lowHighest = lowStats.getMax();
+
+        double highLowest = highStats.getMin();
+        double lowLowest = lowStats.getMin();
         long highCount = highCars.size();
         long lowCount = lowCars.stream().count();
 
@@ -262,14 +270,17 @@ public class CarTest {
         List<Car> highCars = carsGrouped.get("HIGH");
         List<Car> lowCars = carsGrouped.get("LOW");
 
-        double highAverage = highCars.stream().mapToDouble(Car::getDominationCount).average().orElse(0);
-        double lowAverage = lowCars.stream().mapToDouble(Car::getDominationCount).average().orElse(0);
+        DoubleSummaryStatistics highStats = highCars.stream().collect(Collectors.summarizingDouble( Car::getDominationCount));
+        DoubleSummaryStatistics lowStats = lowCars.stream().collect(Collectors.summarizingDouble(Car::getDominationCount));
 
-        int highHighest = highCars.stream().mapToInt(Car::getDominationCount).max().orElse(0);
-        int lowHighest = lowCars.stream().mapToInt(Car::getDominationCount).max().orElse(0);
+        double highAverage = highStats.getAverage();
+        double lowAverage = lowStats.getAverage();
 
-        int highLowest = highCars.stream().min( Comparator.comparing( (Car car)->car.getDominationCount() )).get().getDominationCount();
-        int lowLowest = lowCars.stream().map( (Car car)-> car.getDominationCount() ).min( Comparator.comparing(domination -> domination)).get();
+        double highHighest = highStats.getMax();
+        double lowHighest = lowStats.getMax();
+
+        double highLowest = highStats.getMin();
+        double lowLowest = lowStats.getMin();
         long highCount = highCars.size();
         long lowCount = lowCars.stream().count();
 
