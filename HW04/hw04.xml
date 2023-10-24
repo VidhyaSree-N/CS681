@@ -58,13 +58,13 @@
 		</junitlauncher>
 	</target>
 
-	<target name="run" depends="test">
-		<java classname="edu.umb.cs681.hw04.Main"
-			  classpathref="classpath"
-			  fork="true"/>
-	</target>
+<!--	<target name="run" depends="test">-->
+<!--		<java classname="edu.umb.cs681.hw04.Main"-->
+<!--			  classpathref="classpath"-->
+<!--			  fork="true"/>-->
+<!--	</target>-->
 
-	<target name="clean" depends="run">
+	<target name="clean" depends="test">
 		<delete includeemptydirs="true">
 			<fileset dir="${bin}/edu/umb/cs681/hw04" includes="**/*" />
 			<fileset dir="${test.bin}/edu/umb/cs681/hw04" includes="**/*" />

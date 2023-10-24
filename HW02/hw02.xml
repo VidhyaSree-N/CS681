@@ -28,12 +28,12 @@
 		<echo message="CLASSPATH: ${toString:classpath}" />
 	</target>
 
-	<target name="resolve" depends="init"
-			description="--> Download JAR files (listed in ivy.xml) to the 'lib' directory.">
-		<ivy:retrieve />
-	</target>
+<!--	<target name="resolve" depends="init"-->
+<!--			description="&ndash;&gt; Download JAR files (listed in ivy.xml) to the 'lib' directory.">-->
+<!--		<ivy:retrieve />-->
+<!--	</target>-->
 
-	<target name="compile" depends="resolve">
+	<target name="compile" depends="init">
 		<javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no">
 			<classpath refid="classpath" />
 			<include name="edu/umb/cs681/hw02/*.java" />

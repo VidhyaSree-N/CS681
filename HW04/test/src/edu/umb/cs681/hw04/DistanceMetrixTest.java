@@ -31,7 +31,11 @@ public class DistanceMetrixTest {
     public void DistanceMetrixTest(){
         List<List<Double>> points = generateRandomPoints(numPoints, numDimensions);
         List<List<Double>> distanceMatrix = Distance.matrix(points, new Euclidean());
+        List<List<Double>> distanceMatrix2 = Distance.matrix(points, new Manhattan());
+        List<List<Double>> distanceMatrix3 = Distance.matrix(points, new Cosine());
         assertEquals(2000,distanceMatrix.size());
+        assertEquals(2000,distanceMatrix2.size());
+        assertEquals(2000,distanceMatrix3.size());
     }
 
 }
