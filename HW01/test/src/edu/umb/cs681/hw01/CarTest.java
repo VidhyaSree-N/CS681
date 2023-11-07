@@ -64,7 +64,7 @@ public class CarTest {
             car.setDominationCount(cars);
         }
         Collections.sort(cars, (Car o1, Car o2)-> (o1.getDominationCount() - o2.getDominationCount()));
-        assertEquals(car2, cars.get(0));
+        assertEquals(car8, cars.get(0));
     }
 
     @Test
@@ -93,7 +93,7 @@ public class CarTest {
             car.setDominationCount(cars);
         }
         Collections.sort(cars,Comparator.comparing( Car::getDominationCount ) );
-        assertEquals(car2, cars.get(0));
+        assertEquals(car8, cars.get(0));
     }
 
     @Test
@@ -124,7 +124,7 @@ public class CarTest {
             car.setDominationCount(cars);
         }
         Collections.sort(cars,Comparator.comparing(Car::getDominationCount, Comparator.reverseOrder()) );
-        assertEquals(car9, cars.get(4));
+        assertEquals(car7, cars.get(4));
     }
     @Test
     public void priceSort() {
@@ -296,14 +296,14 @@ public class CarTest {
         System.out.println("Count of High group cars : "+highCount);
         System.out.println("Count of low group cars : "+lowCount);
 
-        assertEquals(1, highCount);
-        assertEquals(9, lowCount);
-        assertEquals(4.0, highAverage);
-        assertEquals(0.7777777777777778, lowAverage);
-        assertEquals(4, highHighest);
-        assertEquals(2, lowHighest);
-        assertEquals(4, highLowest);
-        assertEquals(0, lowLowest);
+        assertEquals(9, highCount);
+        assertEquals(1, lowCount);
+        assertEquals(8.444444444444445, highAverage);
+        assertEquals(3.0, lowAverage);
+        assertEquals(9, highHighest);
+        assertEquals(3, lowHighest);
+        assertEquals(6, highLowest);
+        assertEquals(3, lowLowest);
     }
 }
 

@@ -45,15 +45,11 @@ public class Car {
         int dominationCount = 0;
         for (Car car : cars) {
             if (!car.equals(this)) {
-                if ((this.getYear() >= car.getYear()) &&
-                        (this.getMileage() <= car.getMileage()) &&
-                        (this.getPrice() <= car.getPrice())) {
                     if ((this.getYear() > car.getYear()) ||
                             (this.getMileage() < car.getMileage()) ||
                             (this.getPrice() < car.getPrice())) {
                         dominationCount++;
                     }
-                }
             }
         }
         this.dominationCount = dominationCount;
