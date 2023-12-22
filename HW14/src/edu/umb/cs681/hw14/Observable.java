@@ -9,23 +9,46 @@ public abstract class Observable<T> {
 	ReentrantLock lockObs = new ReentrantLock();
 	
 	public void addObserver(Observer<T> o) {
-		observers.add(o);
+		lockObs.lock();
+		try {
+			observers.add(o);
+		}finally {
+			lockObs.unlock();
+		}
 	}
 
 	public void clearObservers() {
-		observers.clear();
-		
+		lockObs.lock();
+		try {
+			observers.clear();
+		}finally {
+			lockObs.unlock();
+		}
 	}
 	public List<Observer<T>> getObservers(){
-		return observers;
+		lockObs.lock();
+		try {
+			return observers;
+		}finally {
+			lockObs.unlock();
+		}
 	}
 	
 	public int countObservers() {
-		return observers.size();
-		
+		lockObs.lock();
+		try {
+			return observers.size();
+		}finally {
+			lockObs.unlock();
+		}
 	}
 	public void removeObserver(Observer<T> o) {
-		observers.remove(o);
+		lockObs.lock();
+		try {
+			observers.remove(o);
+		}finally {
+			lockObs.unlock();
+		}
 	}
 
 	public void notifyObservers(T event) {
